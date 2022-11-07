@@ -1,0 +1,50 @@
+[
+    {
+    "id": 1,
+    "name": "piza1",
+    "ingredients": ["felt1", "felt2", "felt3"],
+    "image": "kép"
+    },
+
+    {
+        "id": 2,
+        "name": "piza1",
+        "ingredients": ["felt1", "felt2", "felt3"],
+        "image": "kép"
+    },
+
+    {
+        "id": 3,
+        "name": "piza1",
+        "ingredients": ["felt1", "felt2", "felt3"],
+        "image": "kép"
+    },
+
+    {
+        "id": 4,
+        "name": "piza1",
+        "ingredients": ["felt1", "felt2", "felt3"],
+        "image": "kép"
+    },
+
+    {
+        "id": 5,
+        "name": "piza1",
+        "ingredients": ["felt1", "felt2", "felt3"],
+        "image": "kép"
+    },
+    
+    {
+        "id": 6,
+        "name": "piza1",
+        "ingredients": ["felt1", "felt2", "felt3"],
+        "image": "kép"
+    },
+
+    {
+        "id": 7,
+        "name": "piza1",
+        "ingredients": ["felt1", "felt2", "felt3"],
+        "image": "kép"
+    }  
+]
