@@ -59,25 +59,3 @@ reloaderBtn.addEventListener('click', () => {
   window.location.reload()
 })
 
-const test = document.querySelector('.test')
-
-test.insertAdjacentHTML("beforeend", `
-  <div>
-    <p>Eltünsz?</p>
-    <span>Vagymi?</span>
-    <h1>Jó lesz!</h1>
-  </div>  
-`)
-
-const deleteBtn = document.querySelector('.remove')
-
-deleteBtn.addEventListener("click", (event) => {
-  myFunction()
-})
-
-function myFunction() {
-  const list = document.querySelector('.test');
-  if (list.hasChildNodes()) {
-    list.removeChild(list.children[0]);
-  }
-}
