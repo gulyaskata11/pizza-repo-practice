@@ -87,8 +87,14 @@ app.delete('/admin/del/:id', (req, res) => {
       let pizzas = JSON.parse(data)
 
       let delPizza = pizzas.find(el => el.id === delPizzaId)
+
+      if(delPizza !== undefined) {
       let index = pizzas.indexOf(delPizza)
       pizzas.splice(index, 1)
+      } else {
+        console.log("hiba")
+        return res.status(500).send("This pizza does not exist!")
+      }
 
       fs.writeFile(`${__dirname}/data/pizza.json`, JSON.stringify(pizzas, null, 4), (error) => {
         if(error) {

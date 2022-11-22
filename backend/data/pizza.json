@@ -3,11 +3,11 @@
         "id": "1",
         "name": "Primavera",
         "ingredients": [
-            "Tomato sauce",
             "Fior di latte cheese",
-            "Spicy soppresatta",
-            "Roasted red peppers",
-            "Kalamata olives"
+            "Zucchini",
+            "Eggplant",
+            "Roasted peppers",
+            "Caramelized onions"
         ],
         "price": "23",
         "active": "false"
