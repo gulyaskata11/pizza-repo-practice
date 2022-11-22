@@ -1,5 +1,7 @@
 const rootElement = document.querySelector('#root')
 const addPizzaForm = document.querySelector('.add-pizza-form')
+const delPizzaForm = document.querySelector('.del-pizza-form')
+const modifyPizza = document.querySelector('.modify')
 
 const addPizzas = async () => {
     return fetch('/pizza')
@@ -45,8 +47,6 @@ const addNewPizza = async () => {
             price: priceInput
         }
 
-        console.log(newPizzaDatas)
-
         await fetch('/admin', {
             method: 'POST',
             headers: {
@@ -64,7 +64,7 @@ const addNewPizza = async () => {
 const delPizza = async () => {
     const delBtn = document.querySelector('.del-pizza')
     delBtn.addEventListener("click", async () => {
-        let delInput = document.querySelector('#pizza-id').value
+        let delInput = document.querySelector('#del-pizza-id').value
         await fetch(`/admin/del/${delInput}`, {
             method: 'DELETE'
         })
@@ -73,7 +73,57 @@ const delPizza = async () => {
     })
 }
 
+const selectPizza = async () => {
+    const selectBtn = document.querySelector('.select-pizza')
+    selectBtn.addEventListener("click", async () => {
+        let selectedId = document.querySelector("#select-pizza-id").value
+        let pizzaNameSel = document.querySelector('.sel-pizza-name')
+        let pizzaPriceSel = document.querySelector('.sel-pizza-price')
+        let pizzaIngrSel = document.querySelector('.sel-pizza-ingredients')
+        let pizzaIdSel = document.querySelector('.pizz-id')
+        await fetch(`/admin/${selectedId}`)
+         .then(res => res.json())
+         .then(newPizza => {
+            pizzaIdSel.innerHTML = newPizza.id
+            pizzaNameSel.value = newPizza.name,
+            pizzaPriceSel.value = newPizza.price,
+            pizzaIngrSel.value = newPizza.ingredients
+            })
+        
+        await modifyPizzaComponent()
+    })
+}
 
+const modifyPizzaComponent = async () => {
+    const modBtn = document.querySelector('.modify-pizza')
+    modBtn.addEventListener("click", async () => {
+
+        let selectedId = document.querySelector("#select-pizza-id").value
+        let modNameInput = document.querySelector('.sel-pizza-name').value
+        let modPriceInput = document.querySelector('.sel-pizza-price').value
+        let modIngrInput = document.querySelector('.sel-pizza-ingredients').value
+        let modStatusSelect = document.querySelector('.sel-pizza-status').value
+
+        let modifiedPizzaDatas = {
+            "id": selectedId,
+            "name": modNameInput,
+            "ingredients": modIngrInput.split(','),
+            "price": modPriceInput,
+            "active": modStatusSelect
+        }
+
+        await fetch(`/admin/modify/${selectedId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(modifiedPizzaDatas)
+        }) 
+
+        rootElement.innerHTML = ""
+        await elementBuilder()
+    })
+}
 
 
 
@@ -87,17 +137,25 @@ const main = async () => {
       <input type="text" name="ingredients" id="ingredients" placeholder="Ingredients">
       <input type="number" name="price" id="price" placeholder="Price">
       <button class="send-btn">Send</button>
+      <input type="reset" value="Empty">
   </form>
   `)
 
   addPizzaForm.insertAdjacentHTML("beforeend", `
-    <input type="number" name="id" id="pizza-id">
+    <input type="number" name="id" id="del-pizza-id">
     <button class="del-pizza">Delete</button>
+  `)
+
+  delPizzaForm.insertAdjacentHTML("beforeend", `
+    <input type="number" name="id" id="select-pizza-id">
+    <button class="select-pizza">Select</button>
   `)
 
   await addNewPizza()
 
   await delPizza()
+
+  await selectPizza()
 }
 
 main()

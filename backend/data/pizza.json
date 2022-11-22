@@ -1,13 +1,19 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "name": "Primavera",
-        "ingredients": ["Fior di latte cheese", "Zucchini", "Eggplant", "Roasted peppers", "Caramelized onions"],
-        "price": 19
+        "ingredients": [
+            "Tomato sauce",
+            "Fior di latte cheese",
+            "Spicy soppresatta",
+            "Roasted red peppers",
+            "Kalamata olives"
+        ],
+        "price": "23",
+        "active": "false"
     },
-    
     {
-        "id": 2,
+        "id": "2",
         "name": "Prosciutto",
         "ingredients": [
             "Tomato sauce",
@@ -16,33 +22,33 @@
             "Arugula",
             "Parmigiano Reggiano"
         ],
-        "price": 20
+        "price": "20",
+        "active": "true"
     },
-    
     {
-        "id": 3,
+        "id": "3",
         "name": "Salami",
         "ingredients": [
             "Tomato sauce",
             "Fior di latte cheese",
             "Salami"
         ],
-        "price": 21
+        "price": "21",
+        "active": "true"
     },
-    
     {
-        "id": 4,
+        "id": "4",
         "name": "Margherita",
         "ingredients": [
             "Tomato sauce",
             "Fior di latte cheese",
             "Fresh basil"
         ],
-        "price": 21
+        "price": "20",
+        "active": "true"
     },
-    
     {
-        "id": 5,
+        "id": "5",
         "name": "Capricciosa",
         "ingredients": [
             "Tomato sauce",
@@ -52,11 +58,11 @@
             "Artichokes",
             "Mushrooms"
         ],
-        "price": 22
+        "price": "22",
+        "active": "true"
     },
-    
     {
-        "id": 6,
+        "id": "6",
         "name": "Patata",
         "ingredients": [
             "Potatoes",
@@ -64,11 +70,11 @@
             "Pancetta",
             "Caramelized onions"
         ],
-        "price": 22
+        "price": "22",
+        "active": "false"
     },
-    
     {
-        "id": 7,
+        "id": "7",
         "name": "Vivo",
         "ingredients": [
             "Tomato sauce",
@@ -77,6 +83,7 @@
             "Roasted red peppers",
             "Kalamata olives"
         ],
-        "price": 23
+        "price": "23",
+        "active": "true"
     }
 ]

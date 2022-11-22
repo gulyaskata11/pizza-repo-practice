@@ -54,12 +54,15 @@ app.post('/admin', (req, res) => {
     } else {
       let pizzas = JSON.parse(data)
 
+      let lastItem = pizzas[pizzas.length - 1]
+      let lastItemId = parseInt(lastItem.id)
+
       let newPizza = {
-        "id": pizzas[pizzas.length-1].id + 1,
+        "id": (lastItemId + 1).toString(),
         "name": req.body.name,
-        "ingredients": req.body.ingredients.split(' '),
-        "price": parseInt(req.body.price),
-        "active": true
+        "ingredients": req.body.ingredients.split(', '),
+        "price": req.body.price,
+        "active": "true"
       }
 
       pizzas.push(newPizza)
@@ -76,7 +79,7 @@ app.post('/admin', (req, res) => {
 })
 
 app.delete('/admin/del/:id', (req, res) => {
-  let delPizzaId = parseInt(req.params.id)
+  let delPizzaId = req.params.id
   fs.readFile(`${__dirname}/data/pizza.json`, (err, data) => {
     if(err) {
       console.log(err)
@@ -95,6 +98,50 @@ app.delete('/admin/del/:id', (req, res) => {
         }
     })
     }
+  })
+})
+
+app.get('/admin/:id', (req, res) => {
+  let selPizzaId = req.params.id
+  fs.readFile(`${__dirname}/data/pizza.json`, (err, data) => {
+    if(err) {
+      console.log(err)
+    }else {
+      let pizzas = JSON.parse(data)
+
+      let selPizza = pizzas.find(el => el.id === selPizzaId)
+      return res.send(selPizza)
+    }
+  })
+})
+
+app.put('/admin/modify/:id', (req, res) => {
+  let modPizzaId = req.params.id
+  let changes = req.body
+
+  fs.readFile(`${__dirname}/data/pizza.json`, (err, data) => {
+    if(err) {
+      console.log(err)
+    }else {
+      let pizzas = JSON.parse(data)
+
+      let index = pizzas.findIndex(pizza => pizza.id === modPizzaId)
+
+      if(index !== -1) {
+        pizzas[index] = changes 
+      } else {
+        res.send("This pizza does not exist!")
+      }
+
+      fs.writeFile(`${__dirname}/data/pizza.json`, JSON.stringify(pizzas, null, 4), (error) => {
+        if(error) {
+            console.log(error)
+        } else {
+           res.send("ok")
+        }
+    })
+    }
+
   })
 })
 

@@ -10,7 +10,20 @@
 <body>
     <div id="root"> </div>
     <div class="add-pizza-form"></div>
-   
+    <div class="del-pizza-form"></div>
+    <div class="modify">
+        <h3 class="pizz-id"></h3>
+        <input type="text" class="sel-pizza-name" value="">
+        <input type="number" class="sel-pizza-price" value="">
+        <input type="text" class="sel-pizza-ingredients" value="">
+        <select class="sel-pizza-status" name="boolean" size="1" required>  
+            <option value="true"> true </option>  
+            <option value="false"> false </option>  
+        </select>  
+        <button class="modify-pizza">Modification</button>
+    </div>
+    
+    
     
     <!-- <div>
         <button class="del-pizza" data-id="${id}">Delete</button>
