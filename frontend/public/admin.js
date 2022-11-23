@@ -90,7 +90,7 @@ const selectPizza = async () => {
             pizzaIngrSel.value = newPizza.ingredients
             })
         
-        await modifyPizzaComponent()
+        
     })
 }
 
@@ -156,6 +156,8 @@ const main = async () => {
   await delPizza()
 
   await selectPizza()
+
+  await modifyPizzaComponent()
 }
 
 main()
